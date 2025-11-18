@@ -102,14 +102,12 @@ function displayUpcomingPerformances(performances) {
   }
 
   // 公演がある場合
-  const upcomingGrid = document.createElement('div');
-  upcomingGrid.className = 'upcoming-grid';
-
   performances.forEach(performance => {
-    const upcomingCard = document.createElement('article');
-    upcomingCard.className = 'upcoming-card';
+    const performanceCard = document.createElement('div');
+    performanceCard.className = 'performance-card';
+    performanceCard.style.marginBottom = '3rem';
     if (performance.id) {
-      upcomingCard.id = performance.id;
+      performanceCard.id = performance.id;
     }
 
     const metaItems = [];
@@ -131,7 +129,7 @@ function displayUpcomingPerformances(performances) {
       const isExternal = performance.ticketUrl.startsWith('http');
       const linkTarget = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
       ticketButton = `
-        <div style="margin-top: 2rem;">
+        <div style="margin-top: 1.5rem;">
           <a href="${performance.ticketUrl}"${linkTarget} class="hero-cta" style="display: inline-block; text-decoration: none;">チケットを購入</a>
         </div>
       `;
@@ -145,25 +143,30 @@ function displayUpcomingPerformances(performances) {
       metaTags.push(`<span class="upcoming-status">${performance.status}</span>`);
     }
 
-    upcomingCard.innerHTML = `
-      ${metaTags.length > 0 ? `<div class="upcoming-meta">${metaTags.join('')}</div>` : ''}
-      <h3>${performance.title}</h3>
-      ${metaItems.length > 0 ? `<dl class="performance-meta" style="margin-top: 1rem;">${metaItems.join('')}</dl>` : ''}
-      ${performance.description ? `
-      <div class="performance-description" style="margin-top: 1.5rem;">
-        ${performance.description.split('\n').map(p => `<p>${p}</p>`).join('')}
+    // 過去の公演と同じ形式（performance-card）で表示
+    performanceCard.innerHTML = `
+      <div class="performance-body">
+        ${metaTags.length > 0 ? `<div class="upcoming-meta" style="margin-bottom: 1rem;">${metaTags.join('')}</div>` : ''}
+        ${performance.label ? `<p class="performance-label">${performance.label}</p>` : ''}
+        <h3 class="performance-title">${performance.title}</h3>
+        <dl class="performance-meta">
+          ${metaItems.join('')}
+        </dl>
+        <p class="performance-description">${performance.description ? performance.description.split('\n').map(p => `<p>${p}</p>`).join('') : ''}</p>
+        ${ticketButton}
+      </div>
+      ${performance.image ? `
+      <div class="performance-media">
+        <img src="${performance.image}" alt="${performance.imageAlt || performance.title}" loading="lazy" />
       </div>
       ` : ''}
-      ${ticketButton}
     `;
 
-    upcomingGrid.appendChild(upcomingCard);
+    upcomingContainer.appendChild(performanceCard);
   });
 
-  upcomingContainer.appendChild(upcomingGrid);
-
   // revealアニメーション用のクラスを追加
-  const revealElements = upcomingContainer.querySelectorAll('.upcoming-card');
+  const revealElements = upcomingContainer.querySelectorAll('.performance-card');
   revealElements.forEach((element) => {
     element.classList.add('reveal');
     // IntersectionObserverでアニメーションを適用
@@ -229,7 +232,7 @@ function displayPastPerformances(performances) {
         <dl class="performance-meta">
           ${metaItems.join('')}
         </dl>
-        <p class="performance-description">${performance.description || ''}</p>
+        <p class="performance-description">${performance.description ? performance.description.split('\n').map(p => `<p>${p}</p>`).join('') : ''}</p>
       </div>
       ${performance.image ? `
       <div class="performance-media">
@@ -268,6 +271,143 @@ function displayPastPerformances(performances) {
   });
 }
 
+// index.html用：今後の最新公演1つと過去の最新公演1つを表示する関数
+function displayIndexPerformances(upcomingPerformances, pastPerformances) {
+  const indexContainer = document.getElementById('index-performances-container');
+  if (!indexContainer) {
+    return;
+  }
+
+  // 既存の内容をクリア
+  indexContainer.innerHTML = '';
+
+  // 今後の最新公演を1つ取得
+  const latestUpcoming = upcomingPerformances && Array.isArray(upcomingPerformances) && upcomingPerformances.length > 0
+    ? upcomingPerformances[0]
+    : null;
+
+  // 過去の最新公演を1つ取得（配列の最初の要素が最新と仮定）
+  const latestPast = pastPerformances && Array.isArray(pastPerformances) && pastPerformances.length > 0
+    ? pastPerformances[0]
+    : null;
+
+  // 今後の公演を表示
+  if (latestUpcoming) {
+    const performanceCard = createPerformanceCard(latestUpcoming, true);
+    indexContainer.appendChild(performanceCard);
+  }
+
+  // 過去の公演を表示
+  if (latestPast) {
+    const performanceCard = createPerformanceCard(latestPast, false);
+    indexContainer.appendChild(performanceCard);
+  }
+
+  // 両方ともない場合
+  if (!latestUpcoming && !latestPast) {
+    indexContainer.innerHTML = `
+      <p class="section-lead" style="text-align: center; color: var(--text-soft);">
+        公演情報は<a href="performances.html">公演情報ページ</a>でご確認いただけます。
+      </p>
+    `;
+  }
+
+  // revealアニメーション用のクラスを追加
+  const revealElements = indexContainer.querySelectorAll('.performance-card');
+  revealElements.forEach((element) => {
+    element.classList.add('reveal');
+    // IntersectionObserverでアニメーションを適用
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '0px 0px -40px 0px',
+        }
+      );
+      observer.observe(element);
+    } else {
+      element.classList.add('is-visible');
+    }
+  });
+}
+
+// 公演カードを作成する共通関数
+function createPerformanceCard(performance, isUpcoming) {
+  const performanceCard = document.createElement('div');
+  performanceCard.className = 'performance-card';
+  performanceCard.style.marginBottom = '3rem';
+  if (performance.id) {
+    performanceCard.id = performance.id;
+  }
+
+  const metaItems = [];
+  if (performance.date) {
+    metaItems.push(`<div><dt>上演日</dt><dd>${performance.date}</dd></div>`);
+  }
+  if (performance.venue) {
+    metaItems.push(`<div><dt>会場</dt><dd>${performance.venue}</dd></div>`);
+  }
+  if (performance.composer) {
+    metaItems.push(`<div><dt>作曲</dt><dd>${performance.composer}</dd></div>`);
+  }
+  if (performance.language) {
+    metaItems.push(`<div><dt>言語</dt><dd>${performance.language}</dd></div>`);
+  }
+
+  let actionButton = '';
+  if (isUpcoming && performance.ticketUrl) {
+    const isExternal = performance.ticketUrl.startsWith('http');
+    const linkTarget = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+    actionButton = `
+      <div style="margin-top: 1.5rem;">
+        <a href="${performance.ticketUrl}"${linkTarget} class="hero-cta" style="display: inline-block; text-decoration: none;">チケットを購入</a>
+      </div>
+    `;
+  } else if (!isUpcoming && performance.id) {
+    actionButton = `
+      <div style="margin-top: 1.5rem;">
+        <a href="performances.html#${performance.id}" class="hero-cta" style="display: inline-block; text-decoration: none;">詳細を見る</a>
+      </div>
+    `;
+  }
+
+  const metaTags = [];
+  if (performance.season) {
+    metaTags.push(`<span class="upcoming-season">${performance.season}</span>`);
+  }
+  if (performance.status) {
+    metaTags.push(`<span class="upcoming-status">${performance.status}</span>`);
+  }
+
+  performanceCard.innerHTML = `
+    <div class="performance-body">
+      ${metaTags.length > 0 ? `<div class="upcoming-meta" style="margin-bottom: 1rem;">${metaTags.join('')}</div>` : ''}
+      ${performance.label ? `<p class="performance-label">${performance.label}</p>` : ''}
+      <h3 class="performance-title">${performance.title}</h3>
+      <dl class="performance-meta">
+        ${metaItems.join('')}
+      </dl>
+      <p class="performance-description">${performance.description ? performance.description.split('\n').map(p => `<p>${p}</p>`).join('') : ''}</p>
+      ${actionButton}
+    </div>
+    ${performance.image ? `
+    <div class="performance-media">
+      <img src="${performance.image}" alt="${performance.imageAlt || performance.title}" loading="lazy" />
+    </div>
+    ` : ''}
+  `;
+
+  return performanceCard;
+}
+
 // エラーメッセージを表示する関数
 function displayError(containerId, message) {
   const container = document.getElementById(containerId);
@@ -296,14 +436,20 @@ async function initContent() {
       displayError('news-grid', 'ニュースの読み込みに失敗しました。');
     }
     
-    // 今後の公演を表示
+    // index.htmlの場合は、今後の最新公演1つと過去の最新公演1つを表示
+    const indexPerformancesContainer = document.getElementById('index-performances-container');
+    if (indexPerformancesContainer) {
+      displayIndexPerformances(contentData.upcomingPerformances, contentData.pastPerformances);
+    }
+    
+    // 今後の公演を表示（performances.html用）
     if (contentData.upcomingPerformances !== undefined) {
       displayUpcomingPerformances(contentData.upcomingPerformances);
     } else {
       displayError('upcoming-performances-container', '今後の公演の読み込みに失敗しました。');
     }
     
-    // 過去の公演を表示
+    // 過去の公演を表示（performances.html用）
     if (contentData.pastPerformances) {
       displayPastPerformances(contentData.pastPerformances);
     } else {
@@ -312,6 +458,7 @@ async function initContent() {
   } catch (error) {
     console.error('コンテンツの読み込みエラー:', error);
     displayError('news-grid', 'コンテンツの読み込みに失敗しました。');
+    displayError('index-performances-container', 'コンテンツの読み込みに失敗しました。');
     displayError('upcoming-performances-container', 'コンテンツの読み込みに失敗しました。');
     displayError('past-performances-container', 'コンテンツの読み込みに失敗しました。');
   }

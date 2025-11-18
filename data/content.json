@@ -15,7 +15,22 @@
       "linkText": "公演一覧を見る"
     }
   ],
-  "upcomingPerformances": [],
+  "upcomingPerformances": [
+    {
+      "id": "new-opera-2025",
+      "title": "新作オペラ 2025",
+      "date": "2025年6月15日（日）",
+      "venue": "渋谷区文化総合センター大和田 伝承ホール",
+      "composer": "新進作曲家",
+      "language": "日本語",
+      "season": "2025年",
+      "status": "新作",
+      "image": "./img/4.jpg",
+      "imageAlt": "新作オペラ 2025 の様子",
+      "description": "オペラボが手がける新作オペラです。現代社会をテーマに、人々の絆と希望を描いた感動的な物語をお届けします。\n\n詳細な情報は決まり次第、順次お知らせいたします。",
+      "ticketUrl": "https://teket.jp/g/j28z5rq5fp"
+    }
+  ],
   "pastPerformances": [
     {
       "id": "american-dream",
