@@ -81,6 +81,114 @@ function displayNews(newsData) {
   });
 }
 
+// 今後の公演を表示する関数
+function displayUpcomingPerformances(performances) {
+  const upcomingContainer = document.getElementById('upcoming-performances-container');
+  if (!upcomingContainer) {
+    return;
+  }
+
+  // 既存の内容をクリア
+  upcomingContainer.innerHTML = '';
+
+  // 公演がない場合
+  if (!performances || !Array.isArray(performances) || performances.length === 0) {
+    upcomingContainer.innerHTML = `
+      <p class="section-lead" style="text-align: center; color: var(--text-soft);">
+        現在、今後の公演は予定されておりません。公演情報が決まり次第、こちらに掲載いたします。
+      </p>
+    `;
+    return;
+  }
+
+  // 公演がある場合
+  const upcomingGrid = document.createElement('div');
+  upcomingGrid.className = 'upcoming-grid';
+
+  performances.forEach(performance => {
+    const upcomingCard = document.createElement('article');
+    upcomingCard.className = 'upcoming-card';
+    if (performance.id) {
+      upcomingCard.id = performance.id;
+    }
+
+    const metaItems = [];
+    if (performance.date) {
+      metaItems.push(`<div><dt>上演日</dt><dd>${performance.date}</dd></div>`);
+    }
+    if (performance.venue) {
+      metaItems.push(`<div><dt>会場</dt><dd>${performance.venue}</dd></div>`);
+    }
+    if (performance.composer) {
+      metaItems.push(`<div><dt>作曲</dt><dd>${performance.composer}</dd></div>`);
+    }
+    if (performance.language) {
+      metaItems.push(`<div><dt>言語</dt><dd>${performance.language}</dd></div>`);
+    }
+
+    let ticketButton = '';
+    if (performance.ticketUrl) {
+      const isExternal = performance.ticketUrl.startsWith('http');
+      const linkTarget = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      ticketButton = `
+        <div style="margin-top: 2rem;">
+          <a href="${performance.ticketUrl}"${linkTarget} class="hero-cta" style="display: inline-block; text-decoration: none;">チケットを購入</a>
+        </div>
+      `;
+    }
+
+    const metaTags = [];
+    if (performance.season) {
+      metaTags.push(`<span class="upcoming-season">${performance.season}</span>`);
+    }
+    if (performance.status) {
+      metaTags.push(`<span class="upcoming-status">${performance.status}</span>`);
+    }
+
+    upcomingCard.innerHTML = `
+      ${metaTags.length > 0 ? `<div class="upcoming-meta">${metaTags.join('')}</div>` : ''}
+      <h3>${performance.title}</h3>
+      ${metaItems.length > 0 ? `<dl class="performance-meta" style="margin-top: 1rem;">${metaItems.join('')}</dl>` : ''}
+      ${performance.description ? `
+      <div class="performance-description" style="margin-top: 1.5rem;">
+        ${performance.description.split('\n').map(p => `<p>${p}</p>`).join('')}
+      </div>
+      ` : ''}
+      ${ticketButton}
+    `;
+
+    upcomingGrid.appendChild(upcomingCard);
+  });
+
+  upcomingContainer.appendChild(upcomingGrid);
+
+  // revealアニメーション用のクラスを追加
+  const revealElements = upcomingContainer.querySelectorAll('.upcoming-card');
+  revealElements.forEach((element) => {
+    element.classList.add('reveal');
+    // IntersectionObserverでアニメーションを適用
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '0px 0px -40px 0px',
+        }
+      );
+      observer.observe(element);
+    } else {
+      element.classList.add('is-visible');
+    }
+  });
+}
+
 // 過去の公演を表示する関数
 function displayPastPerformances(performances) {
   const pastPerformancesContainer = document.getElementById('past-performances-container');
@@ -188,6 +296,13 @@ async function initContent() {
       displayError('news-grid', 'ニュースの読み込みに失敗しました。');
     }
     
+    // 今後の公演を表示
+    if (contentData.upcomingPerformances !== undefined) {
+      displayUpcomingPerformances(contentData.upcomingPerformances);
+    } else {
+      displayError('upcoming-performances-container', '今後の公演の読み込みに失敗しました。');
+    }
+    
     // 過去の公演を表示
     if (contentData.pastPerformances) {
       displayPastPerformances(contentData.pastPerformances);
@@ -197,6 +312,7 @@ async function initContent() {
   } catch (error) {
     console.error('コンテンツの読み込みエラー:', error);
     displayError('news-grid', 'コンテンツの読み込みに失敗しました。');
+    displayError('upcoming-performances-container', 'コンテンツの読み込みに失敗しました。');
     displayError('past-performances-container', 'コンテンツの読み込みに失敗しました。');
   }
 }
