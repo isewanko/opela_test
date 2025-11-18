@@ -15,7 +15,20 @@
       "linkText": "公演一覧を見る"
     }
   ],
-  "upcomingPerformances": [],
+  "upcomingPerformances": [
+    {
+    "id": "new-performance-2025",
+    "title": "新作オペラ 2025",
+    "date": "2025年6月15日（日）",
+    "venue": "都内ホール",
+    "composer": "作曲家名",
+    "language": "日本語",
+    "season": "2025年",
+    "status": "新作",
+    "description": "新しいオペラ作品の説明文です。",
+    "ticketUrl": "https://teket.jp/..."
+  }
+  ],
   "pastPerformances": [
     {
       "id": "american-dream",
