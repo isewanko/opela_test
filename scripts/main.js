@@ -40,10 +40,30 @@
   }
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
       if (navList.classList.contains("is-open")) {
         navList.classList.remove("is-open");
         navToggle?.setAttribute("aria-expanded", "false");
+      }
+
+      // スムーズスクロールの実装
+      if (link.hash) {
+        e.preventDefault();
+        const targetId = link.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+          const targetPosition = targetElement.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // URLを更新（ブラウザの戻るボタン対応）
+          history.pushState(null, null, link.hash);
+        }
       }
     });
   });
