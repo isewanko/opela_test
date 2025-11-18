@@ -1505,6 +1505,66 @@ body {
   color: rgba(226, 232, 240, 0.65);
 }
 
+.newsletter-success-message {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  color: var(--accent-gold);
+  z-index: 2000;
+  box-shadow: var(--shadow-gold);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.contact-success,
+.contact-errors {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-success {
+  border-color: var(--accent-gold);
+}
+
+.contact-success h2 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.contact-errors {
+  border-color: var(--accent-red);
+}
+
+.contact-errors h2 {
+  color: var(--accent-red);
+  margin-top: 0;
+}
+
+.contact-errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  color: var(--text-soft);
+}
+
 @media (max-width: 1024px) {
   .vision-grid {
     grid-template-columns: 1fr;

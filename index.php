@@ -1,0 +1,419 @@
+<?php
+session_start();
+
+// メールニュース登録成功メッセージ
+$newsletter_success = isset($_GET['newsletter']) && $_GET['newsletter'] === 'success';
+
+$page_title = 'Aurora Stage Lab | オーロララボ';
+$page_description = 'Aurora Stage Lab（オーロララボ）は、若手中心の挑戦的な舞台クリエイティブ集団として、伝統と革新を織り交ぜた体験を届けます。';
+include 'includes/header.php';
+?>
+
+<?php if ($newsletter_success): ?>
+  <div class="newsletter-success-message">
+    <p>メールニュースへの登録ありがとうございます！</p>
+  </div>
+<?php endif; ?>
+
+
+    <main>
+      <section id="home" class="section hero hero-with-image">
+        <div class="hero-background" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1920&q=80"
+            alt="オペラ舞台の様子"
+            loading="eager"
+          />
+        </div>
+        <div class="container hero-inner reveal">
+          <div class="hero-badge">Aurora Stage Lab</div>
+          <h1 class="hero-title">
+            舞台芸術で<br class="hero-title-break" />新たな実験を
+          </h1>
+          <p class="hero-lead">
+            若手クリエイターの挑戦と最新テクノロジーを融合し、観客と創り手が共鳴する舞台体験をデザインしています。
+          </p>
+          <div class="hero-actions">
+            <a class="hero-cta" href="#performance">最新公演情報へ</a>
+            <a class="hero-outline" href="#about">オペラボとは</a>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <span class="hero-meta-label">始動</span>
+              <span>2023年春</span>
+            </div>
+            <div>
+              <span class="hero-meta-label">メンバー</span>
+              <span>演出家・パフォーマー・舞台技術者 30名超</span>
+            </div>
+            <div>
+              <span class="hero-meta-label">活動拠点</span>
+              <span>首都圏をベースに全国で展開</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+      </section>
+
+      <section id="about" class="section section-alt">
+        <div class="container reveal">
+          <h2 class="section-title">オペラボとは</h2>
+          <p class="section-lead">
+            Aurora Stage Lab（オーロララボ）は、舞台芸術をもっと身近に、もっと自由に届けるために活動するクリエイティブ集団です。音楽と演劇、そしてテクノロジーを横断するチームで、プロジェクトごとに最適な体験をデザインします。
+          </p>
+          <div class="about-image-section">
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80"
+              alt="オペラボの活動風景"
+              loading="lazy"
+              class="about-main-image"
+            />
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-image">
+                <img
+                  src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80"
+                  alt="若手中心のラボ精神"
+                  loading="lazy"
+                />
+              </div>
+              <h3>若手中心のラボ精神</h3>
+              <p>
+                20〜30代のパフォーマー・演奏家・ドラマトゥルク・舞台技術スタッフが互いに学び合い、制作ごとに研究開発を行う「ラボ」体制を採用。
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-image">
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
+                  alt="テクノロジーとの融合"
+                  loading="lazy"
+                />
+              </div>
+              <h3>テクノロジーとの融合</h3>
+              <p>
+                プロジェクションマッピングやXR演出、観客参加型インタラクションなど、最新の舞台表現を積極的に取り入れています。
+              </p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-image">
+                <img
+                  src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80"
+                  alt="地域との共創"
+                  loading="lazy"
+                />
+              </div>
+              <h3>地域との共創</h3>
+              <p>
+                学校や地域ホールと連携し、ワークショップ・公開リハーサル・アウトリーチ公演を通じて裾野を広げています。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs" class="section">
+        <div class="container reveal">
+          <h2 class="section-title">プログラム</h2>
+          <div class="program-grid">
+            <article class="program-card">
+              <div class="program-image">
+                <img
+                  src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=80"
+                  alt="歌唱ワークショップの様子"
+                  loading="lazy"
+                />
+              </div>
+              <div class="program-body">
+                <h3>Vocal Lab</h3>
+                <p>
+                  国際的に活躍するコーチ陣による少人数制ボーカルラボ。作品の時代背景や言語を徹底的に掘り下げ、身体表現とともに磨き上げます。
+                </p>
+              </div>
+            </article>
+            <article class="program-card">
+              <div class="program-image">
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+                  alt="創作ミーティングのイメージ"
+                  loading="lazy"
+                />
+              </div>
+              <div class="program-body">
+                <h3>Creators Studio</h3>
+                <p>
+                  演出家・脚本家・作曲家によるコラボラティブな創作スタジオ。AIを活用した台本開発や、VRでの美術プレビューも実施しています。
+                </p>
+              </div>
+            </article>
+            <article class="program-card">
+              <div class="program-image">
+                <img
+                  src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80"
+                  alt="オーケストラの練習風景"
+                  loading="lazy"
+                />
+              </div>
+              <div class="program-body">
+                <h3>Community Sessions</h3>
+                <p>
+                  学校・図書館・地域ホールと連携し、子どもたちや初めてオペラに触れる人向けに体験プログラムと対話型鑑賞会を提供しています。
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="performance" class="section section-alt">
+        <div class="container reveal">
+          <h2 class="section-title">プロジェクト</h2>
+          <div class="performance-card">
+            <div class="performance-body">
+              <p class="performance-label">新作パフォーマンス｜満席御礼</p>
+              <h3 class="performance-title">Echo of Fragments</h3>
+              <dl class="performance-meta">
+                <div>
+                  <dt>上演日</dt>
+                  <dd>2024年11月</dd>
+                </div>
+                <div>
+                  <dt>会場</dt>
+                  <dd>都内文化交流スペース「Crossing Theater」</dd>
+                </div>
+                <div>
+                  <dt>音楽</dt>
+                  <dd>匿名コンポーザー Collective Horizon</dd>
+                </div>
+                <div>
+                  <dt>脚本</dt>
+                  <dd>匿名ドラマトゥルク Echo Writers</dd>
+                </div>
+              </dl>
+              <p class="performance-description">
+                過去の記憶をテーマにした本作では、映像・朗読・音楽を交錯させ、人が抱える断片的な物語を多層的に表現しました。観客がシーン間を回遊しながら体験できるインスタレーション形式です。
+              </p>
+            </div>
+            <div class="performance-media">
+              <img
+                src="https://images.unsplash.com/photo-1533237264985-ee6f932f3dad?auto=format&fit=crop&w=800&q=80"
+                alt="Echo of Fragments 公演の様子"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="performance-subgrid">
+            <article class="performance-feature">
+              <h4>ポスト・セッション</h4>
+              <p>
+                クリエイティブ・ディレクターと文化研究者を迎えたトークでは、「断片的な記憶を舞台に翻訳する方法」について対話しました。
+              </p>
+            </article>
+            <article class="performance-feature">
+              <h4>リサーチ協力</h4>
+              <p>
+                市民アーカイブの証言資料をもとに舞台美術と衣裳を設計。会場内にリサーチノートを展示し、来場者が自由に閲覧できるスペースを用意しました。
+              </p>
+            </article>
+            <article class="performance-feature">
+              <h4>オーディエンスラボ</h4>
+              <p>
+                公演前後に子ども向けワークショップやオンライン読書会を開催。鑑賞後アンケートでは「自分の物語を語り合いたくなった」との声が多数寄せられました。
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="section section-alt">
+        <div class="container gallery-container reveal">
+          <h2 class="section-title">フォトギャラリー</h2>
+          <p class="section-lead">
+            公演やリハーサル、リサーチの様子をフォトレポートでご紹介します。画像は Unsplash のクリエイター・コミュニティからライセンスフリー素材を利用しています。
+          </p>
+          <div class="gallery-grid">
+            <figure class="gallery-card">
+              <img
+                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
+                alt="舞台照明の演出"
+                loading="lazy"
+              />
+              <figcaption>舞台照明のニュアンスを研究する照明チームのテスト風景。</figcaption>
+            </figure>
+            <figure class="gallery-card">
+              <img
+                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80"
+                alt="舞台で歌う歌手"
+                loading="lazy"
+              />
+              <figcaption>主演歌手によるアリアの稽古。演出家との細かなディスカッションが続きます。</figcaption>
+            </figure>
+            <figure class="gallery-card">
+              <img
+                src="https://images.unsplash.com/photo-1497030001856-6ed94dca9f07?auto=format&fit=crop&w=900&q=80"
+                alt="楽譜を読むミュージシャン"
+                loading="lazy"
+              />
+              <figcaption>オーケストラメンバーのスタディセッション。歴史資料と照らし合わせながら音楽を編み直します。</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="timeline" class="section">
+        <div class="container reveal">
+          <h2 class="section-title">プロジェクト年表</h2>
+          <ol class="timeline">
+            <li>
+              <div class="timeline-point">
+                <span class="timeline-date">2023.04</span>
+                <div class="timeline-body">
+                  <h3>Aurora Stage Lab 始動</h3>
+                  <p>
+                    若手パフォーマーと演出家の有志によって研究会としてスタート。国内外の舞台シーンを分析するオンラインサロンを開講。
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-point">
+                <span class="timeline-date">2023.11</span>
+                <div class="timeline-body">
+                  <h3>リサーチプログラムを開始</h3>
+                  <p>
+                    社会文化分野の専門家とともにフィールドワークを実施。関係者ヒアリングや資料収集を行い、《Echo of Fragments》制作の土台を築きました。
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-point">
+                <span class="timeline-date">2024.11</span>
+                <div class="timeline-body">
+                  <h3>《Echo of Fragments》 初演</h3>
+                  <p>
+                    都内の文化複合施設にて公演。多様な背景を持つ観客と共感を育む演出が好評を博しました。
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-point">
+                <span class="timeline-date">2025.01</span>
+                <div class="timeline-body">
+                  <h3>アーカイブ配信と教育連携</h3>
+                  <p>
+                    配信と併せて学校向けオンライン教材を制作。作品に登場する手紙を題材にした言語学習用ワークシートやレッスンプランを提供しています。
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="news" class="section section-alt">
+        <div class="container reveal">
+          <h2 class="section-title">ニュース & メディア</h2>
+          <div class="news-grid">
+            <article class="news-card">
+              <span class="news-tag">リサーチ資料</span>
+              <h3>舞台記憶アーカイブの公開</h3>
+              <p>
+                国際舞台文化アーカイブが公開した《Echo of Fragments》の資料ページでは、制作背景や研究者インタビューが掲載されています。ラボは公演準備の参考として活用しました。
+              </p>
+              <a
+                class="news-link"
+                href="https://example.com/archives/echo-of-fragments"
+                target="_blank"
+                rel="noopener noreferrer"
+                >アーカイブ資料を読む</a
+              >
+            </article>
+            <article class="news-card">
+              <span class="news-tag">イベント</span>
+              <h3>デジタル舞台フォーラム参加</h3>
+              <p>
+                デジタル舞台フォーラムでは、舞台芸術とテクノロジーを掛け合わせた国内外の事例が紹介されました。ラボはメディアアートとの協働を進める上でヒントを得ています。
+              </p>
+              <a
+                class="news-link"
+                href="https://example.com/events/digital-stage-forum"
+                target="_blank"
+                rel="noopener noreferrer"
+                >イベント概要を見る</a
+              >
+            </article>
+            <article class="news-card">
+              <span class="news-tag">レポート</span>
+              <h3>市民アーカイブとの協働</h3>
+              <p>
+                国内の市民アーカイブ施設では、生活の記録を後世に伝える展示が常設されています。舞台美術チームは展示資料を参考に、舞台造形の考証を進めました。
+              </p>
+              <a
+                class="news-link"
+                href="https://example.com/memory-archive"
+                target="_blank"
+                rel="noopener noreferrer"
+                >展示情報を確認</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container contact-container reveal">
+          <h2 class="section-title">お問い合わせ</h2>
+          <p class="contact-lead">
+            公演に関するお問い合わせ、コラボレーションのご相談など、お気軽にご連絡ください。
+          </p>
+          <div class="contact-actions">
+            <a href="mailto:info@operalab.jp" class="contact-link">メールで相談する</a>
+            <a
+              href="https://x.com/AuroraStageLab"
+              class="contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X (旧Twitter)</a
+            >
+            <a href="#" class="contact-link">Instagram</a>
+          </div>
+          <form class="contact-form" action="contact.php" method="post">
+            <div class="form-grid">
+              <label>
+                お名前
+                <input type="text" name="name" placeholder="例）山田 太郎" required />
+              </label>
+              <label>
+                ご所属
+                <input type="text" name="organization" placeholder="例）○○ホール" />
+              </label>
+              <label class="form-full">
+                メールアドレス
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="info@example.com"
+                  required
+                />
+              </label>
+              <label class="form-full">
+                お問い合わせ内容
+                <textarea
+                  name="message"
+                  rows="4"
+                  placeholder="公演依頼、ワークショップのご相談などお気軽にご記入ください。"
+                  required
+                ></textarea>
+              </label>
+            </div>
+            <button type="submit" class="form-submit">送信する</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+<?php include 'includes/footer.php'; ?>
+

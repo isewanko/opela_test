@@ -3,7 +3,7 @@
   const navList = document.querySelector(".nav-list");
   const navLinks = document.querySelectorAll(".nav-list a");
   const revealElements = document.querySelectorAll(".reveal");
-  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const currentPath = window.location.pathname.split("/").pop() || "index.php";
 
   if (navToggle && navList) {
     navToggle.addEventListener("click", () => {
@@ -26,7 +26,7 @@
 
     navLinks.forEach((link) => {
       const linkHash = link.hash;
-      const linkPath = link.pathname.split("/").pop() || "index.html";
+      const linkPath = link.pathname.split("/").pop() || "index.php";
       const isHashMatch =
         linkHash && currentSectionId && linkHash === `#${currentSectionId}`;
       const isPathMatch = !linkHash && linkPath === currentPath;
