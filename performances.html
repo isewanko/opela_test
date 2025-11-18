@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>公演情報 | Opera Lab Japan | オペラボ</title>
+    <meta
+      name="description"
+      content="Opera Lab Japan（オペラボ）の公演情報。最新公演から過去の公演まで、各公演の詳細をご覧いただけます。"
+    />
+    <link rel="icon" type="image/webp" href="./img/icon.webp" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" class="brand" style="text-decoration: none; display: flex; align-items: center; gap: 0.8rem;">
+          <img src="./img/icon.webp" alt="Opera Lab Japan" style="width: 2.5rem; height: 2.5rem; object-fit: contain;" />
+          <span class="brand-name">Opera Lab Japan</span>
+        </a>
+        <nav class="site-nav" aria-label="メインメニュー">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav-list"
+          >
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="sr-only">メニューを開閉</span>
+          </button>
+          <ul id="site-nav-list" class="nav-list">
+            <li><a href="index.html#home">ホーム</a></li>
+            <li><a href="index.html#about">オペラボとは</a></li>
+            <li><a href="performances.html">公演情報</a></li>
+            <li><a href="index.html#news">ニュース</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="performances-hero" class="section hero page-hero">
+        <div class="container reveal">
+          <div class="breadcrumb">
+            <a href="index.html">ホーム</a>
+            <span>/</span>
+            <span>公演情報</span>
+          </div>
+          <h1 class="section-title">公演情報</h1>
+          <p class="section-lead">
+            Opera Lab Japan（オペラボ）の公演情報をご紹介します。今後の公演と過去の公演の詳細をご覧いただけます。
+          </p>
+        </div>
+      </section>
+
+      <section id="upcoming" class="section">
+        <div class="container reveal">
+          <h2 class="section-title">今後の公演</h2>
+          <p class="section-lead">
+            現在、今後の公演は予定されておりません。公演情報が決まり次第、こちらに掲載いたします。
+          </p>
+          <!-- 今後の公演を追加する場合は、以下の形式で追加してください -->
+          <!--
+          <div class="upcoming-grid">
+            <article class="upcoming-card" id="performance-id">
+              <div class="upcoming-meta">
+                <span class="upcoming-season">2025年</span>
+                <span class="upcoming-status">新作</span>
+              </div>
+              <h3>公演タイトル</h3>
+              <dl class="performance-meta" style="margin-top: 1rem;">
+                <div>
+                  <dt>上演日</dt>
+                  <dd>2025年XX月XX日（X）</dd>
+                </div>
+                <div>
+                  <dt>会場</dt>
+                  <dd>会場名</dd>
+                </div>
+                <div>
+                  <dt>作曲</dt>
+                  <dd>作曲家名</dd>
+                </div>
+                <div>
+                  <dt>言語</dt>
+                  <dd>言語（日本語字幕付き）</dd>
+                </div>
+              </dl>
+              <div class="performance-description" style="margin-top: 1.5rem;">
+                <p>
+                  公演の説明文をここに記入してください。
+                </p>
+              </div>
+              <div style="margin-top: 2rem;">
+                <a href="チケット購入URL" target="_blank" rel="noopener noreferrer" class="hero-cta" style="display: inline-block; text-decoration: none;">チケットを購入</a>
+              </div>
+            </article>
+          </div>
+          -->
+        </div>
+      </section>
+
+      <section id="past-performances" class="section section-alt">
+        <div class="container reveal">
+          <h2 class="section-title">過去の公演</h2>
+          <p class="section-lead">
+            過去の公演をご紹介します。
+          </p>
+          <div id="past-performances-container">
+            <!-- 過去の公演はJavaScriptで読み込まれます -->
+          </div>
+        </div>
+      </section>
+
+      <section id="ticket-info" class="section">
+        <div class="container reveal">
+          <h2 class="section-title">チケット情報</h2>
+          <div class="ticket-grid">
+            <div class="ticket-card">
+              <h3>チケット購入</h3>
+              <p>
+                オペラボのチケットは、電子チケット販売プラットフォーム「teket」からご購入いただけます。
+              </p>
+              <div style="margin-top: 1.5rem;">
+                <a href="https://teket.jp/g/j28z5rq5fp" target="_blank" rel="noopener noreferrer" class="hero-cta" style="display: inline-block; text-decoration: none;">teketで購入</a>
+              </div>
+            </div>
+            <div class="ticket-card">
+              <h3>お問い合わせ</h3>
+              <p>
+                公演に関するお問い合わせは、以下のメールアドレスまでお願いいたします。
+              </p>
+              <p style="margin-top: 1rem;">
+                <a href="mailto:operalabjapan@gmail.com" style="color: var(--accent-gold);">operalabjapan@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-newsletter">
+          <h3>メールニュースに登録</h3>
+          <p>新作情報・チケット先行案内・教育プログラム情報を月1回お届けします。</p>
+          <form class="footer-form" action="#" method="post">
+            <label class="sr-only" for="newsletter-email">メールアドレス</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="newsletter-email"
+              placeholder="yourname@example.com"
+              required
+            />
+            <button type="submit">登録する</button>
+          </form>
+        </div>
+        <p>© 2024 Opera Lab Japan. All rights reserved.</p>
+        <p class="site-footer-subtitle">通称：オペラボ</p>
+      </div>
+    </footer>
+
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/content.js" defer></script>
+  </body>
+</html>
+

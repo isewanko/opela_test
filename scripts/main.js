@@ -3,7 +3,7 @@
   const navList = document.querySelector(".nav-list");
   const navLinks = document.querySelectorAll(".nav-list a");
   const revealElements = document.querySelectorAll(".reveal");
-  const currentPath = window.location.pathname.split("/").pop() || "index.php";
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
 
   if (navToggle && navList) {
     navToggle.addEventListener("click", () => {
@@ -46,7 +46,16 @@
         navToggle?.setAttribute("aria-expanded", "false");
       }
 
-      // スムーズスクロールの実装
+      const linkPath = link.pathname.split("/").pop() || "index.html";
+      const isDifferentPage = linkPath !== currentPath;
+
+      // 別ページへのリンクの場合、通常の遷移を許可
+      if (isDifferentPage) {
+        // デフォルトの動作を許可（ページ遷移）
+        return;
+      }
+
+      // 同じページ内のハッシュリンクの場合、スムーズスクロール
       if (link.hash) {
         e.preventDefault();
         const targetId = link.hash.substring(1);
