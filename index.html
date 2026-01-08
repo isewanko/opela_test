@@ -32,8 +32,9 @@
           </button>
           <ul id="site-nav-list" class="nav-list">
             <li><a href="index.html#home">ホーム</a></li>
-            <li><a href="index.html#about">オペラボとは</a></li>
             <li><a href="performances.html">公演情報</a></li>
+            <li><a href="index.html#about">オペラボとは</a></li>
+            <li><a href="greeting.html">代表挨拶</a></li>
             <li><a href="index.html#news">ニュース</a></li>
             <li><a href="index.html#contact">お問い合わせ</a></li>
           </ul>
@@ -48,29 +49,43 @@
             src="./img/1.jpg"
             alt="オペラ舞台の様子"
             loading="eager"
+            class="hero-bg-image"
           />
         </div>
-        <div class="container hero-inner reveal">
+        <div class="container hero-inner">
           <h1 class="hero-title">
-            舞台芸術で<br class="hero-title-break" />新たな挑戦を
+            舞台芸術で<br />新たな挑戦を
           </h1>
-          <p class="hero-lead">
-            オペラで新たな実験を －挑戦を続けるオペラカンパニー
-          </p>
-          <div class="hero-actions">
-            <a class="hero-cta" href="performances.html">公演情報へ</a>
-            <a class="hero-outline" href="#about">オペラボとは</a>
-          </div>
+          <div class="hero-brand">Opera Lab Japan</div>
         </div>
         <div class="hero-overlay" aria-hidden="true"></div>
       </section>
 
+      <section id="performance" class="section">
+        <div class="container reveal">
+          <h2 class="section-title">
+            <span class="section-title-en">PERFORMANCES</span>
+            <span class="section-title-ja">公演情報</span>
+          </h2>
+          <div id="index-performances-container">
+            <!-- 今後の最新公演と過去の最新公演はJavaScriptで読み込まれます -->
+          </div>
+          <div style="text-align: center; margin-top: 3rem;">
+            <a href="performances.html" class="hero-cta" style="display: inline-block; text-decoration: none;">公演情報を見る</a>
+          </div>
+        </div>
+      </section>
+
       <section id="about" class="section section-alt">
         <div class="container reveal">
-          <h2 class="section-title">オペラボとは</h2>
+          <h2 class="section-title">
+            <span class="section-title-en">ABOUT</span>
+            <span class="section-title-ja">オペラボとは</span>
+          </h2>
           <p class="section-lead">
-            オペラで新たな実験を －挑戦を続けるオペラカンパニー
+            オペラで新たな実験を、挑戦を続けるカンパニー
           </p>
+
           <div class="feature-grid">
             <article class="feature-card">
               <div class="feature-image">
@@ -80,7 +95,7 @@
                   loading="lazy"
                 />
               </div>
-              <h3>ラボ精神</h3>
+              <h3>Lab Spirit</h3>
               <p>
                 「Lab（研究室・実験室）」のように試行錯誤と挑戦を繰り返し、新しいオペラの可能性を探求します。伝統を尊重しながらも、常に新しい表現方法を模索しています。
               </p>
@@ -93,7 +108,7 @@
                   loading="lazy"
                 />
               </div>
-              <h3>多様な作品</h3>
+              <h3>Diverse Repertoire</h3>
               <p>
                 古典的なオペラ作品から現代作品まで、幅広いレパートリーに取り組んでいます。『フィガロの結婚』、『魔笛』、『リゴレット』などの名作から、日本初演作品まで。
               </p>
@@ -106,72 +121,43 @@
                   loading="lazy"
                 />
               </div>
-              <h3>人々の「生」を豊かに</h3>
+              <h3>Enriching Lives</h3>
               <p>
                 観る人、つくる人、演じる人、すべての人々の「生」がより豊かになるオペラづくりを目指しています。感動と共感を生み出す舞台を創り上げます。
               </p>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section id="performance" class="section">
-        <div class="container reveal">
-          <h2 class="section-title">公演情報</h2>
-          <div id="index-performances-container">
-            <!-- 今後の最新公演と過去の最新公演はJavaScriptで読み込まれます -->
-          </div>
-        </div>
-      </section>
-
-
-
-      <section id="gallery" class="section section-alt">
-        <div class="container gallery-container reveal">
-          <h2 class="section-title">フォトギャラリー</h2>
-          <p class="section-lead">
-            公演やリハーサルの様子をフォトレポートでご紹介します。
-          </p>
-          <div class="gallery-grid">
-            <figure class="gallery-card">
-              <img
-                src="./img/1.jpg"
-                alt="オペラ公演の様子"
-                loading="lazy"
-              />
-              <figcaption>オペラボの公演風景。観客と創り手が共鳴する舞台体験を創り上げます。</figcaption>
-            </figure>
-            <figure class="gallery-card">
-              <img
-                src="./img/2.jpg"
-                alt="オペラ公演の様子"
-                loading="lazy"
-              />
-              <figcaption>舞台芸術の未来を切り拓くパイオニアとして、新たな挑戦を続けています。</figcaption>
-            </figure>
-            <figure class="gallery-card">
-              <img
-                src="./img/3.jpg"
-                alt="オペラ公演の様子"
-                loading="lazy"
-              />
-              <figcaption>すべての人々の「生」がより豊かになるオペラづくりを目指しています。</figcaption>
-            </figure>
-            <figure class="gallery-card">
-              <img
-                src="./img/4.jpg"
-                alt="オペラ公演の様子"
-                loading="lazy"
-              />
-              <figcaption>Lab（研究室・実験室）のように試行錯誤と挑戦を繰り返しています。</figcaption>
-            </figure>
+          <div class="greeting-preview" style="margin-top: 4rem;">
+            <div class="greeting-preview-content">
+              <div class="greeting-preview-text">
+                <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem; font-weight: 600;">代表挨拶</h3>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">
+                  Opera Lab Japanは、オペラの舞台を通じて、国や世代、音楽、科学、文学といったジャンルの「壁」を超えた芸術のあり方を模索していきます。舞台芸術の未来を切り拓くパイオニアになるべく、「Lab（研究室・実験室）」のように試行錯誤と挑戦を繰り返し、すべての人々の「生」がより豊かになっていくオペラづくりを進めて参ります。
+                </p>
+                <div style="margin-top: 2rem;">
+                  <a href="greeting.html" class="hero-outline" style="display: inline-block; text-decoration: none;">詳細を読む</a>
+                </div>
+              </div>
+              <div class="greeting-preview-image">
+                <img
+                  src="./img/代表.jpg"
+                  alt="Opera Lab Japan 代表 近藤はるか"
+                  class="greeting-preview-img"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section id="timeline" class="section">
         <div class="container reveal">
-          <h2 class="section-title">沿革</h2>
+          <h2 class="section-title">
+            <span class="section-title-en">HISTORY</span>
+            <span class="section-title-ja">沿革</span>
+          </h2>
           <ol class="timeline">
             <li>
               <div class="timeline-point">
@@ -212,16 +198,59 @@
 
       <section id="news" class="section section-alt">
         <div class="container reveal">
-          <h2 class="section-title">ニュース</h2>
+          <h2 class="section-title">
+            <span class="section-title-en">NEWS</span>
+            <span class="section-title-ja">ニュース</span>
+          </h2>
           <div id="news-grid" class="news-grid">
             <!-- ニュースはJavaScriptで読み込まれます -->
           </div>
         </div>
       </section>
 
+      <section id="gallery" class="section section-alt">
+        <div class="container reveal">
+          <h2 class="section-title">
+            <span class="section-title-en">GALLERY</span>
+            <span class="section-title-ja">フォトギャラリー</span>
+          </h2>
+          <p class="section-lead">
+            公演やリハーサルの様子をフォトレポートでご紹介します。
+          </p>
+        </div>
+        <div class="gallery-slider">
+            <div class="gallery-slider-container">
+              <div class="gallery-slide active">
+                <img src="./img/1.jpg" alt="オペラ公演の様子" loading="lazy" />
+              </div>
+              <div class="gallery-slide">
+                <img src="./img/2.jpg" alt="オペラ公演の様子" loading="lazy" />
+              </div>
+              <div class="gallery-slide">
+                <img src="./img/3.jpg" alt="オペラ公演の様子" loading="lazy" />
+              </div>
+              <div class="gallery-slide">
+                <img src="./img/4.jpg" alt="オペラ公演の様子" loading="lazy" />
+              </div>
+            </div>
+            <button class="gallery-prev" aria-label="前の画像">‹</button>
+            <button class="gallery-next" aria-label="次の画像">›</button>
+            <div class="gallery-dots">
+              <button class="gallery-dot active" aria-label="スライド1"></button>
+              <button class="gallery-dot" aria-label="スライド2"></button>
+              <button class="gallery-dot" aria-label="スライド3"></button>
+              <button class="gallery-dot" aria-label="スライド4"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section">
         <div class="container contact-container reveal">
-          <h2 class="section-title">お問い合わせ</h2>
+          <h2 class="section-title">
+            <span class="section-title-en">CONTACT</span>
+            <span class="section-title-ja">お問い合わせ</span>
+          </h2>
           <p class="contact-lead">
             公演に関するお問い合わせ、コラボレーションのご相談など、お気軽にご連絡ください。
           </p>

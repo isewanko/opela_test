@@ -97,5 +97,75 @@
   } else {
     revealElements.forEach((element) => element.classList.add("is-visible"));
   }
+
+  // ギャラリースライドショー
+  const gallerySlider = document.querySelector('.gallery-slider');
+  if (gallerySlider) {
+    const slides = gallerySlider.querySelectorAll('.gallery-slide');
+    const dots = gallerySlider.querySelectorAll('.gallery-dot');
+    const prevBtn = gallerySlider.querySelector('.gallery-prev');
+    const nextBtn = gallerySlider.querySelector('.gallery-next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }
+
+    function prevSlide() {
+      const prev = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prev);
+    }
+
+    function startAutoSlide() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(slideInterval);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+        stopAutoSlide();
+        startAutoSlide();
+      });
+    });
+
+    // マウスホバーで自動スライドを一時停止
+    gallerySlider.addEventListener('mouseenter', stopAutoSlide);
+    gallerySlider.addEventListener('mouseleave', startAutoSlide);
+
+    // 自動スライドを開始
+    startAutoSlide();
+  }
 })();
 

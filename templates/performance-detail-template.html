@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}} | Opera Lab Japan | オペラボ</title>
+    <meta
+      name="description"
+      content="{{DESCRIPTION}}"
+    />
+    <link rel="icon" type="image/webp" href="./img/icon.webp" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" class="brand" style="text-decoration: none; display: flex; align-items: center; gap: 0.8rem;">
+          <img src="./img/icon.webp" alt="Opera Lab Japan" style="width: 2.5rem; height: 2.5rem; object-fit: contain;" />
+          <span class="brand-name">Opera Lab Japan</span>
+        </a>
+        <nav class="site-nav" aria-label="メインメニュー">
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav-list"
+          >
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="sr-only">メニューを開閉</span>
+          </button>
+          <ul id="site-nav-list" class="nav-list">
+            <li><a href="index.html#home">ホーム</a></li>
+            <li><a href="performances.html">公演情報</a></li>
+            <li><a href="index.html#about">オペラボとは</a></li>
+            <li><a href="greeting.html">代表挨拶</a></li>
+            <li><a href="index.html#news">ニュース</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- メインビジュアル -->
+      <div class="performance-mv">
+        <div class="performance-mv-inner">
+          <img src="{{MAIN_IMAGE}}" alt="{{TITLE}}" class="performance-mv-image" />
+        </div>
+      </div>
+
+      <!-- ローカルナビ -->
+      <div class="local-nav-wrap">
+        <div class="local-nav">
+          <ul class="local-nav-list">
+            <li class="local-nav-item"><a href="#introduction" class="local-nav-link">はじめに</a></li>
+            <li class="local-nav-item"><a href="#staff" class="local-nav-link">スタッフ・キャスト</a></li>
+            <li class="local-nav-item"><a href="#story" class="local-nav-link">ものがたり</a></li>
+            <li class="local-nav-item"><a href="#flyer" class="local-nav-link">フライヤー</a></li>
+            <li class="local-nav-item"><a href="#ticket" class="local-nav-link">チケット情報</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 公演タイトル -->
+      <div class="performance-title-section">
+        <div class="performance-title-inner">
+          <div class="performance-title-season">{{YEAR}}年</div>
+          <h1 class="performance-title-text">
+            <span>{{COMPOSER}}</span>{{TITLE}}
+          </h1>
+          <div class="performance-title-text-sub">{{SUBTITLE}}</div>
+          <div class="performance-title-schedule">
+            <div class="performance-title-schedule-inner">
+              <dl>
+                <dt>公演期間：</dt>
+                <dd>{{DATE}}</dd>
+              </dl>
+              <dl>
+                <dt>予定上演時間：</dt>
+                <dd>{{DURATION}}</dd>
+              </dl>
+              <dl>
+                <dt>会場：</dt>
+                <dd>{{VENUE}}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- イントロ -->
+      <div class="introduction-content" id="introduction">
+        <div class="introduction-inner">
+          <h2 class="section-title">
+            <span class="section-title-en">Introduction</span>
+            <span class="section-title-ja">はじめに</span>
+          </h2>
+          <h3 class="introduction-subtitle">{{SUBTITLE_TEXT}}</h3>
+          <p>
+            {{INTRODUCTION_TEXT}}
+          </p>
+        </div>
+      </div>
+
+      <!-- スタッフ・キャスト -->
+      <div class="staff-cast-section" id="staff">
+        <div class="staff-cast-inner">
+          <div class="staff-cast-title">
+            <h2 class="section-title">
+              <span class="section-title-en">Staff&Cast</span>
+              <span class="section-title-ja">スタッフ・キャスト</span>
+            </h2>
+          </div>
+          <div class="staff-cast-boxes">
+            <div class="staff-cast-box">
+              <h3>スタッフ</h3>
+              <div class="staff-cast-box-inner">
+                <div class="staff-cast-box-left">
+                  <table class="staff-cast-table">
+                    <!-- スタッフリスト -->
+                    <!-- 例: <tr><td class="staff-cast-role">【指 揮】</td><td class="staff-cast-name">名前</td></tr> -->
+                    {{STAFF_LIST}}
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="staff-cast-box">
+              <h3>キャスト</h3>
+              <div class="staff-cast-box-inner">
+                <div class="staff-cast-box-left">
+                  <table class="staff-cast-table">
+                    <!-- キャストリスト -->
+                    <!-- 例: <tr><td class="staff-cast-role">【役名】</td><td class="staff-cast-name">名前</td></tr> -->
+                    {{CAST_LIST}}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ストーリー -->
+      <div class="story-content" id="story">
+        <div class="story-inner">
+          <h2 class="section-title">
+            <span class="section-title-en">Story</span>
+            <span class="section-title-ja">ものがたり</span>
+          </h2>
+          <div class="story-block story-block-left">
+            <figure>
+              <img src="{{STORY_IMAGE_1}}" alt="{{TITLE}} 第1幕" class="story-image" />
+            </figure>
+            <p>
+              {{STORY_ACT_1}}
+            </p>
+          </div>
+          <div class="story-block story-block-right">
+            <p>
+              {{STORY_ACT_2}}
+            </p>
+            <figure>
+              <img src="{{STORY_IMAGE_2}}" alt="{{TITLE}} 第2幕" class="story-image" />
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- フライヤー -->
+      <div class="flyer-section" id="flyer">
+        <div class="flyer-inner">
+          <h2 class="section-title">
+            <span class="section-title-en">FLYER</span>
+            <span class="section-title-ja">公演フライヤー</span>
+          </h2>
+          <div class="flyer-wrapper">
+            <div class="performance-flyer-container">
+              <img 
+                src="{{FLYER_FRONT}}" 
+                alt="{{TITLE}} 公演フライヤー（表）" 
+                class="flyer-image" 
+                loading="lazy"
+              />
+            </div>
+            <div class="performance-flyer-container">
+              <img 
+                src="{{FLYER_BACK}}" 
+                alt="{{TITLE}} 公演フライヤー（裏）" 
+                class="flyer-image" 
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- チケット情報 -->
+      <div class="ticket-details" id="ticket">
+        <div class="ticket-inner">
+          <div class="ticket-title">
+            <h2 class="section-title">
+              <span class="section-title-en">Tickets</span>
+              <span class="section-title-ja">チケット</span>
+            </h2>
+          </div>
+          <div class="ticket-section-details">
+            <section class="ticket-section">
+              <h3 class="ticket-tag">チケット購入</h3>
+              <div class="ticket-section-detail">
+                <p class="ticket-text">
+                  オペラボのチケットは、電子チケット販売プラットフォーム「teket」からご購入いただけます。
+                </p>
+                <div class="ticket-actions">
+                  <a href="{{TICKET_URL}}" target="_blank" rel="noopener noreferrer" class="hero-cta" style="display: inline-block; text-decoration: none; margin-top: 1rem;">teketで購入</a>
+                </div>
+              </div>
+            </section>
+            <section class="ticket-section">
+              <h3 class="ticket-tag">ご注意事項</h3>
+              <div class="ticket-section-detail">
+                <ul class="ticket-notes">
+                  <li>開場は開演45分前です。開演後のご入場は制限させていただきます。</li>
+                  <li>やむを得ない事情により、公演内容やスタッフ・キャストに変更が生じる場合があります。</li>
+                  <li>公演中止の場合を除き、チケットの変更・払い戻しはいたしません。</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-newsletter">
+          <h3>メールニュースに登録</h3>
+          <p>新作情報・チケット先行案内・教育プログラム情報を月1回お届けします。</p>
+          <form class="footer-form" action="#" method="post">
+            <label class="sr-only" for="newsletter-email">メールアドレス</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="newsletter-email"
+              placeholder="yourname@example.com"
+              required
+            />
+            <button type="submit">登録する</button>
+          </form>
+        </div>
+        <p>© 2024 Opera Lab Japan. All rights reserved.</p>
+        <p class="site-footer-subtitle">通称：オペラボ</p>
+      </div>
+    </footer>
+
+    <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/content.js" defer></script>
+    <script>
+      // フライヤー画像の拡大表示機能
+      document.addEventListener('DOMContentLoaded', function() {
+        const flyerImages = document.querySelectorAll('.flyer-image');
+        flyerImages.forEach(function(flyerImg) {
+          flyerImg.addEventListener('click', function() {
+            const modal = document.createElement('div');
+            modal.className = 'flyer-modal';
+            modal.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.95);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              z-index: 10000;
+              cursor: pointer;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            `;
+            
+            const modalImg = document.createElement('img');
+            modalImg.src = this.src;
+            modalImg.alt = this.alt;
+            modalImg.style.cssText = `
+              max-width: 90%;
+              max-height: 90%;
+              object-fit: contain;
+              border-radius: 12px;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            `;
+            
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+            
+            setTimeout(() => {
+              modal.style.opacity = '1';
+            }, 10);
+            
+            modal.addEventListener('click', function() {
+              modal.style.opacity = '0';
+              setTimeout(() => {
+                document.body.removeChild(modal);
+              }, 300);
+            });
+            
+            const closeOnEscape = (e) => {
+              if (e.key === 'Escape') {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                  document.body.removeChild(modal);
+                  document.removeEventListener('keydown', closeOnEscape);
+                }, 300);
+              }
+            };
+            document.addEventListener('keydown', closeOnEscape);
+          });
+          
+          flyerImg.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.boxShadow = '0 8px 24px rgba(212, 175, 55, 0.3)';
+          });
+          flyerImg.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+          });
+        });
+
+        // ローカルナビのスムーススクロール
+        const localNavLinks = document.querySelectorAll('.local-nav-link');
+        localNavLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              const headerHeight = document.querySelector('.site-header').offsetHeight;
+              const targetPosition = targetElement.offsetTop - headerHeight - 20;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
