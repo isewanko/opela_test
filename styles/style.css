@@ -674,6 +674,16 @@ h1.section-title {
   margin-top: 2rem;
 }
 
+#upcoming-performances-container {
+  max-width: 100%;
+  margin: 2rem auto 0;
+}
+
+#upcoming-performances-container:has(.performance-card:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 100%;
+}
+
 @media (max-width: 860px) {
   .performances-grid {
     grid-template-columns: 1fr;
