@@ -53,7 +53,18 @@
       <!-- ローカルナビ -->
       <div class="local-nav-wrap">
         <div class="local-nav">
-          <ul class="local-nav-list">
+          <button
+            class="local-nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="local-nav-list"
+          >
+            <span class="local-nav-toggle-bar"></span>
+            <span class="local-nav-toggle-bar"></span>
+            <span class="local-nav-toggle-bar"></span>
+            <span class="sr-only">メニューを開閉</span>
+          </button>
+          <ul id="local-nav-list" class="local-nav-list">
             <li class="local-nav-item"><a href="#introduction" class="local-nav-link">はじめに</a></li>
             <li class="local-nav-item"><a href="#staff" class="local-nav-link">スタッフ・キャスト</a></li>
             <li class="local-nav-item"><a href="#story" class="local-nav-link">ものがたり</a></li>

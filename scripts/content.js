@@ -329,7 +329,7 @@ function createPerformanceCard(performance, isUpcoming, hideImage = false) {
     ` : '';
     actionButton = `
       <div style="margin-top: ${marginTop}; text-align: center;">
-        <a href="${performance.ticketUrl}"${linkTarget} class="hero-cta" style="display: inline-block; text-decoration: none;">チケットを購入</a>
+        <a href="${performance.ticketUrl}"${linkTarget} class="hero-cta" style="display: inline-block; text-decoration: none; white-space: nowrap;">チケットを購入</a>
         ${detailLink}
       </div>
     `;

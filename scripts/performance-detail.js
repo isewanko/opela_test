@@ -330,9 +330,22 @@ function updateTicketInfo(performance) {
   }
 }
 
-// ローカルナビのスムーススクロールを設定
+// ローカルナビのスムーススクロールとバーガーメニューを設定
 function setupLocalNav() {
+  const localNavToggle = document.querySelector('.local-nav-toggle');
+  const localNavList = document.querySelector('.local-nav-list');
   const localNavLinks = document.querySelectorAll('.local-nav-link');
+
+  // バーガーメニューのトグル
+  if (localNavToggle && localNavList) {
+    localNavToggle.addEventListener('click', () => {
+      const expanded = localNavToggle.getAttribute('aria-expanded') === 'true';
+      localNavToggle.setAttribute('aria-expanded', String(!expanded));
+      localNavList.classList.toggle('is-open');
+    });
+  }
+
+  // スムーススクロール
   localNavLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -345,6 +358,14 @@ function setupLocalNav() {
           top: targetPosition,
           behavior: 'smooth'
         });
+
+        // スマホ版でメニューを閉じる
+        if (localNavList && localNavList.classList.contains('is-open')) {
+          localNavList.classList.remove('is-open');
+          if (localNavToggle) {
+            localNavToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
       }
     });
   });
