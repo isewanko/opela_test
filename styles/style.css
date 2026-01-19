@@ -2144,9 +2144,33 @@ h1.section-title {
   }
   
   /* スマホ版ではrevealアニメーションを無効化して常に表示 */
-  .reveal {
-    opacity: 1;
-    transform: translateY(0);
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+  
+  /* timelineセクションが確実に表示されるように */
+  #timeline,
+  #timeline.reveal,
+  #timeline .reveal,
+  #timeline .timeline,
+  #timeline .timeline li,
+  #timeline .timeline-point,
+  #timeline .timeline-body {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+  
+  #timeline .timeline {
+    display: grid !important;
+  }
+  
+  #timeline .timeline li {
+    display: list-item !important;
   }
 
   .whatson-btn {

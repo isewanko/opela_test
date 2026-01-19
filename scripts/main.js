@@ -77,7 +77,12 @@
     });
   });
 
-  if ("IntersectionObserver" in window) {
+  // スマホ版（860px以下）の場合は自動的にis-visibleクラスを追加
+  const isMobile = window.innerWidth <= 860;
+  
+  if (isMobile) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+  } else if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -97,6 +102,22 @@
   } else {
     revealElements.forEach((element) => element.classList.add("is-visible"));
   }
+  
+  // リサイズ時にスマホ版になった場合も対応
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      const isMobileNow = window.innerWidth <= 860;
+      if (isMobileNow) {
+        revealElements.forEach((element) => {
+          if (!element.classList.contains("is-visible")) {
+            element.classList.add("is-visible");
+          }
+        });
+      }
+    }, 100);
+  });
 
   // ギャラリースライドショー
   const gallerySlider = document.querySelector('.gallery-slider');
