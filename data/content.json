@@ -1,6 +1,7 @@
 {
   "news": [
     {
+      "date": "2026.1.8",
       "tag": "公演情報",
       "title": "《ドン・ジョヴァンニ》2026年5月23日公演決定",
       "description": "モーツァルトの傑作オペラ《ドン・ジョヴァンニ》の公演が2026年5月23日に決定いたしました。",
@@ -8,14 +9,16 @@
       "linkText": "公演詳細を見る"
     },
     {
+      "date": "2024.12.1",
       "tag": "公演情報",
       "title": "《An American Dream》公演終了",
-      "description": "2024年11月30日（土）に渋谷区文化総合センター大和田 伝承ホールにて上演された《An American Dream（アメリカン・ドリーム）》の公演が無事終了いたしました。ご来場いただいた皆様、ありがとうございました。",
+      "description": "2024年11月30日（土）に渋谷区文化総合センター大和田 伝承ホールにて上演された《An American Dream》の公演が無事終了いたしました。ご来場いただいた皆様、ありがとうございました。",
       "link": "performances.html#american-dream",
       "linkText": "公演詳細を見る"
     },
     {
-      "tag": "公演情報",
+      "date": "2024.11.1",
+      "tag": "お知らせ",
       "title": "公演情報ページ公開",
       "description": "最新公演情報や過去の公演について、詳しくご覧いただけます。各公演の詳細情報も掲載しています。",
       "link": "performances.html",
@@ -42,7 +45,7 @@
     {
       "id": "american-dream",
       "label": "終了",
-      "title": "An American Dream（アメリカン・ドリーム）",
+      "title": "An American Dream",
       "date": "2024年11月30日（土）",
       "venue": "渋谷区文化総合センター大和田 伝承ホール",
       "composer": "Jack Perla",

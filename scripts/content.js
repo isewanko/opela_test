@@ -105,53 +105,53 @@ function displayNews(newsData) {
   // 既存の内容をクリア
   newsGrid.innerHTML = '';
 
-  // ニュースアイテムを表示
-  newsData.forEach(news => {
-    const article = document.createElement('article');
-    article.className = 'news-card';
+  // リストを作成
+  const newsListWrap = document.createElement('div');
+  newsListWrap.className = 'news-list-wrap';
 
-    let linkHTML = '';
+  const newsList = document.createElement('ul');
+  newsList.className = 'news-list';
+
+  newsData.forEach(news => {
+    const listItem = document.createElement('li');
+    listItem.className = 'news-list-item';
+
+    const headDiv = document.createElement('div');
+    headDiv.className = 'news-list-head';
+
+    const dateSpan = document.createElement('span');
+    dateSpan.className = 'news-list-date';
+    dateSpan.textContent = news.date || '';
+
+    const tagSpan = document.createElement('span');
+    tagSpan.className = 'news-tag';
+    tagSpan.setAttribute('data-category', news.tag || 'news');
+    tagSpan.textContent = news.tag || 'ニュース';
+
+    headDiv.appendChild(dateSpan);
+    headDiv.appendChild(tagSpan);
+
+    const link = document.createElement('a');
+    link.className = 'news-list-cont';
     if (news.link) {
       const isExternal = news.link.startsWith('http');
-      const linkTarget = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
-      linkHTML = `<a class="news-link" href="${news.link}"${linkTarget}>${news.linkText || '詳細を見る'}</a>`;
-    }
-
-    article.innerHTML = `
-      <span class="news-tag">${news.tag || 'ニュース'}</span>
-      <h3>${news.title}</h3>
-      <p>${news.description}</p>
-      ${linkHTML}
-    `;
-
-    newsGrid.appendChild(article);
-  });
-
-  // revealアニメーション用のクラスを追加
-  const revealElements = newsGrid.querySelectorAll('.news-card');
-  revealElements.forEach((element) => {
-    element.classList.add('reveal');
-    // IntersectionObserverでアニメーションを適用
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: '0px 0px -40px 0px',
-        }
-      );
-      observer.observe(element);
+      link.href = news.link;
+      if (isExternal) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
     } else {
-      element.classList.add('is-visible');
+      link.href = '#';
     }
+    link.textContent = news.title;
+
+    listItem.appendChild(headDiv);
+    listItem.appendChild(link);
+    newsList.appendChild(listItem);
   });
+
+  newsListWrap.appendChild(newsList);
+  newsGrid.appendChild(newsListWrap);
 }
 
 // 今後の公演を表示する関数
