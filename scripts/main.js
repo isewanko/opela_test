@@ -1,4 +1,5 @@
-(() => {
+// DOMContentLoaded後に実行する関数
+function initMain() {
   const navToggle = document.querySelector(".nav-toggle");
   const navList = document.querySelector(".nav-list");
   const navLinks = document.querySelectorAll(".nav-list a");
@@ -188,5 +189,12 @@
     // 自動スライドを開始
     startAutoSlide();
   }
-})();
+}
+
+// DOMContentLoaded後に初期化
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMain);
+} else {
+  initMain();
+}
 
