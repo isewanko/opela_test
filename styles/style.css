@@ -2185,6 +2185,10 @@ h1.section-title {
     text-align: center;
   }
 
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
   .hero-title-break {
     display: inline;
   }
@@ -2779,7 +2783,8 @@ h1.section-title {
 }
 
 .staff-cast-role {
-  width: 1%;
+  width: 8.5em;
+  min-width: 8.5em;
   white-space: nowrap;
   padding-right: 1.5rem;
   color: var(--accent-gold);
@@ -2952,8 +2957,10 @@ h1.section-title {
   }
 
   .local-nav-link {
-    padding: 0.8rem 1rem;
-    font-size: 0.85rem;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
   }
 
   .performance-title-schedule-inner {
@@ -2990,6 +2997,11 @@ h1.section-title {
 
   .staff-cast-box-inner {
     flex-direction: column;
+  }
+
+  .staff-cast-role {
+    min-width: 8.5em;
+    width: 8.5em;
   }
 }
 
